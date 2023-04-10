@@ -9,10 +9,13 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
     "aos": "^3.0.0-beta.6",
+    "firebase": "^9.19.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "vis": "^4.21.0-EOL",
+    "vis-data": "^7.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^3.1.0",

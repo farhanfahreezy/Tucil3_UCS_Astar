@@ -7,9 +7,9 @@ function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const video = useRef(null);
 
-  useEffect(() => {
-    videoModalOpen ? video.current.play() : video.current.pause();
-  }, [videoModalOpen]);    
+  // useEffect(() => {
+  //   videoModalOpen ? video.current.play() : video.current.pause();
+  // }, [videoModalOpen]);    
 
   return (
     <section>
@@ -42,7 +42,7 @@ function HeroHome() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
-              Landing template for startups
+              Shortest Path
             </h1>
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
               Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.
@@ -62,7 +62,7 @@ function HeroHome() {
           </div>
 
           {/* Hero image */}
-          <div>
+          {/* <div>
             <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
               <img className="mx-auto" src={HeroImage} width="1024" height="504" alt="Hero" />
               <a
@@ -93,10 +93,10 @@ function HeroHome() {
                   />
                 </svg>
               </a>
-            </div>
+            </div> */}
 
             {/* Modal */}
-            <Modal id="modal" ariaLabel="modal-headline" show={videoModalOpen} handleClose={() => setVideoModalOpen(false)}>
+            {/* <Modal id="modal" ariaLabel="modal-headline" show={videoModalOpen} handleClose={() => setVideoModalOpen(false)}>
               <div className="relative pb-9/16">
                 <video ref={video} className="absolute w-full h-full" width="1920" height="1080" loop autoPlay controls>
                   <source src="/videos/video.mp4" type="video/mp4" />
@@ -104,7 +104,7 @@ function HeroHome() {
                 </video>
               </div>
             </Modal>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

@@ -9,6 +9,8 @@ import Testimonials from '../partials/Testimonials';
 import Newsletter from '../partials/Newsletter';
 import Banner from '../partials/Banner';
 import Footer from '../partials/Footer';
+// import Graph from '../partials/Graph';
+import FileInput from '../partials/FileInput';
 
 function Home() {
   return (
@@ -25,16 +27,18 @@ function Home() {
 
         {/*  Page sections */}
         <HeroHome />
-        <FeaturesBlocks />
+        <FileInput />
+        {/* <Graph /> */}
+        {/* <FeaturesBlocks />
         <FeaturesZigZag />
         <Testimonials />
-        <Newsletter />
+        <Newsletter /> */}
       </main>
 
-      <Banner />
+      {/* <Banner /> */}
 
       {/*  Site footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

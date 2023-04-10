@@ -1,0 +1,46 @@
+import { getDistance } from "./Calculator";
+
+function toWeightedAdjacencyMatrix (adjMat, nodes) {
+    for (let i = 0; i < adjMat.length; i++) {
+        for (let j = 0; j < adjMat.length; j++) {
+            if (adjMat[i][j] == 1) {
+                console.log(nodes[i]);
+                const { name: n1, x: lat1, y: lon1 } = nodes[i]; 
+                const { name: n2, x: lat2, y: lon2 } = nodes[j]; 
+                // [_, lat2, lon2] = nodes[j]; 
+                
+                adjMat[i][j] = getDistance(lat1, lon1, lat2, lon2);
+            }
+        }
+    }
+
+    console.log(adjMat);
+
+    return adjMat;
+}
+
+export async function parseFile(fileContent) {
+    const lines = fileContent.split("\n"); // memisahkan file menjadi baris-baris
+    const nodeCount = parseInt(lines[0]); // mendapatkan jumlah simpul
+    const nodes = []; // array untuk menyimpan nama simpul dan koordinat
+    
+    // mengambil informasi setiap simpul
+    for (let i = 1; i <= nodeCount; i++) {
+        const [nodeName, coord] = lines[i].split(" "); // memisahkan nama simpul dan koordinat
+        const [x, y] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi x dan y
+        nodes.push({ name: nodeName, x, y }); // menambahkan nama simpul dan koordinat ke array nodes
+    }
+    
+    let adjacencyMatrix = []; // array untuk menyimpan matriks ketetanggaan
+    
+    // mengambil informasi matriks ketetanggaan
+    for (let i = nodeCount + 1; i < lines.length; i++) {
+        const row = lines[i].split(" ").map(parseFloat); // memisahkan setiap nilai dalam baris
+        adjacencyMatrix.push(row); // menambahkan baris matriks ke array adjacencyMatrix
+    }
+    
+    let weightedAdjacencyMatrix = await toWeightedAdjacencyMatrix(adjacencyMatrix, nodes);
+    return { nodeCount, nodes, weightedAdjacencyMatrix }; // mengembalikan hasil parsing
+}
+
+export default parseFile;
