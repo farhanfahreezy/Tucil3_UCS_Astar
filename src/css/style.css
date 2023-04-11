@@ -22,3 +22,59 @@
 [x-cloak=""] {
     display: none;
 }
+
+.map-wrapper {
+    position: relative;
+    justify-content: center;
+    width: 80%;
+    height: 0;
+    padding-bottom: 56.25%; /* Untuk mengatur aspect ratio menjadi 16:9 */
+}
+
+.map-container {
+    position: relative;
+    justify-content: center;
+    width: 80%;
+    height: 0;
+    padding-bottom: 56.25%; /* Untuk mengatur aspect ratio menjadi 16:9 */
+}
+  
+.leaflet-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+  
+.tooltip-custom {
+    font-style: italic;
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-shadow: 0 0 3px #000000;
+  }
+  
+  .leaflet-tooltip-custom:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 6px 0 6px;
+    border-color: #008000 transparent transparent transparent;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+  }
+  
+  .leaflet-tooltip-custom {
+    background: none !important;
+    color: #008000;
+    font-style: italic;
+    font-size: 12px;
+    text-align: center;
+    transform: rotate(45deg);
+    margin-top: -6px;
+  }
+  

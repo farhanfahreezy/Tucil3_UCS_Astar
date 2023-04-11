@@ -9,8 +9,9 @@ import Testimonials from '../partials/Testimonials';
 import Newsletter from '../partials/Newsletter';
 import Banner from '../partials/Banner';
 import Footer from '../partials/Footer';
-// import Graph from '../partials/Graph';
+import { MapComponent } from '../partials/Map';
 import FileInput from '../partials/FileInput';
+import Example from '../partials/test';
 
 function Home() {
   return (
@@ -28,6 +29,8 @@ function Home() {
         {/*  Page sections */}
         <HeroHome />
         <FileInput />
+        <Example />
+        {/* <MapComponent /> */}
         {/* <Graph /> */}
         {/* <FeaturesBlocks />
         <FeaturesZigZag />
