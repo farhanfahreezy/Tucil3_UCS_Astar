@@ -12,10 +12,12 @@ export function searchPathUCS(start,finish,nodes,weightedAdjacencyMatrix){
     // Masukkan activeNode ke queue
     pQueue.enqueue(activeNode.node,activeNode.step,activeNode.path);
 
+    console.time("ucsTIME");
     // Mencari jawaban dengan algoritma UCS
     while(activeNode.node != finish){
         activeNode = doTheThing(pQueue,finish,weightedAdjacencyMatrix,nodes);
     }
+    console.timeEnd("ucsTIME");
     return activeNode;
 }
 
@@ -33,7 +35,7 @@ function doTheThing(pQueue,finish,weightedAdjacencyMatrix,nodes){
         for(let i = 0;i<weightedAdjacencyMatrix[0].length;i++){
             if(weightedAdjacencyMatrix[activeNode.node.id-1][i]!=0){
                 let id = i+1;
-                if(id != activeNode.path[(activeNode.path).length-1]){
+                if(!activeNode.path.includes(id)){
                     // Megecek agar pencarian tidak mundur kebelakang
                     let newPath = activeNode.path.slice();
                     let newStep = activeNode.step + weightedAdjacencyMatrix[activeNode.node.id-1][i];
@@ -48,7 +50,7 @@ function doTheThing(pQueue,finish,weightedAdjacencyMatrix,nodes){
     return activeNode;
 }
 
-function getNodesById(id,nodes){
+export function getNodesById(id,nodes){
     // Mendapatkan node dari nodes berdasarkan id
     for(let i = 0; i<nodes.length;i++){
         if(nodes[i].id == id){
