@@ -60,16 +60,6 @@ function FileInput() {
         ml-3 
         z-10" 
         type="file" accept=".txt" onChange={handleFileChange} />
-        {/* <button onClick={handleButtonClick}>Gunakan Isi File</button> */}
-        {data && (
-          <div>
-            num of nodes: {data.nodeCount}
-            <br></br>
-            adjacencyMatrix: {data.weightedAdjacencyMatrix.map(row => row.join(' ')).join('\n')}
-            <br></br>
-            {/* path : {path.path} */}
-          </div>
-        )}
       </div>
     </div>
   );

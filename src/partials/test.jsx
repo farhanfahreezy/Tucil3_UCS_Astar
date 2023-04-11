@@ -14,10 +14,8 @@ function Example() {
           adjacencyMatrix: {data.weightedAdjacencyMatrix
             .map((row) => row.join(" "))
             .join("\n")}
-          PPPPPP
         </div>
       )}
-      apoxkapskx
     </div>
   );
 }
