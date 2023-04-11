@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import parseFile from "./Parser";
+import { MapComponent } from "./Map";
 
 function FileInput() {
   const [fileContent, setFileContent] = useState("");
@@ -27,6 +28,9 @@ function FileInput() {
 
   return (
     <div>
+      {/* <MapComponent data = {data} /> */}
+      {data ? <MapComponent data={data} /> : null}
+
       <input type="file" accept=".txt" onChange={handleFileChange} />
       <button onClick={handleButtonClick}>Gunakan Isi File</button>
       {data && (

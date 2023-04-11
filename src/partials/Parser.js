@@ -2,14 +2,15 @@ import { getDistance } from "./Calculator";
 
 function toWeightedAdjacencyMatrix (adjMat, nodes) {
     for (let i = 0; i < adjMat.length; i++) {
-        for (let j = 0; j < adjMat.length; j++) {
+        for (let j = 0; j < i; j++) {
             if (adjMat[i][j] == 1) {
                 console.log(nodes[i]);
-                const { name: n1, x: lat1, y: lon1 } = nodes[i]; 
-                const { name: n2, x: lat2, y: lon2 } = nodes[j]; 
+                const { name: n1, lat: lat1, lon: lon1 } = nodes[i]; 
+                const { name: n2, lat: lat2, lon: lon2 } = nodes[j]; 
                 // [_, lat2, lon2] = nodes[j]; 
                 
                 adjMat[i][j] = getDistance(lat1, lon1, lat2, lon2);
+                adjMat[j][i] = adjMat[i][j];
             }
         }
     }
@@ -27,8 +28,8 @@ export async function parseFile(fileContent) {
     // mengambil informasi setiap simpul
     for (let i = 1; i <= nodeCount; i++) {
         const [nodeName, coord] = lines[i].split(" "); // memisahkan nama simpul dan koordinat
-        const [x, y] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi x dan y
-        nodes.push({ name: nodeName, x, y }); // menambahkan nama simpul dan koordinat ke array nodes
+        const [lat, lon] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi x dan y
+        nodes.push({ name: nodeName, lat, lon }); // menambahkan nama simpul dan koordinat ke arralon nodes
     }
     
     let adjacencyMatrix = []; // array untuk menyimpan matriks ketetanggaan
