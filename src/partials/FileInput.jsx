@@ -6,7 +6,7 @@ import { searchPathUCS } from "./UCS";
 function FileInput() {
   const [fileContent, setFileContent] = useState("");
   const [data, setData] = useState(null);
-  // const [path, setPath] = useState(null);
+  const [path, setPath] = useState(null);
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -18,7 +18,9 @@ function FileInput() {
       const content = e.target.result;
       const parsedData = await parseFile(content);
       setData(parsedData);
-      const getPath = searchPathUCS(1,2,data.nodes,data.nodeCount,data.weightedAdjacencyMatrix);
+      
+      const getPath = searchPathUCS(1,2,parsedData.nodes,parsedData.nodeCount,parsedData.weightedAdjacencyMatrix);
+      console.log(getPath);
       setPath(getPath);
     };
 

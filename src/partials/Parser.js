@@ -4,7 +4,7 @@ function toWeightedAdjacencyMatrix (adjMat, nodes) {
     for (let i = 0; i < adjMat.length; i++) {
         for (let j = 0; j < i; j++) {
             if (adjMat[i][j] == 1) {
-                console.log(nodes[i]);
+                // console.log(nodes[i]);
                 const { name: n1, lat: lat1, lon: lon1 } = nodes[i]; 
                 const { name: n2, lat: lat2, lon: lon2 } = nodes[j]; 
                 // [_, lat2, lon2] = nodes[j]; 
@@ -15,7 +15,7 @@ function toWeightedAdjacencyMatrix (adjMat, nodes) {
         }
     }
 
-    console.log(adjMat);
+    // console.log(adjMat);
 
     return adjMat;
 }
@@ -28,7 +28,7 @@ export async function parseFile(fileContent) {
     // mengambil informasi setiap simpul
     for (let i = 1; i <= nodeCount; i++) {
         const [nodeName, coord] = lines[i].split(" "); // memisahkan nama simpul dan koordinat
-        const [x, y] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi x dan y
+        const [lat, lon] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi latitude dan longitude
         nodes.push({ name: nodeName, lat, lon, id : i }); // menambahkan nama simpul dan koordinat beserta id ke array nodes
     }
     

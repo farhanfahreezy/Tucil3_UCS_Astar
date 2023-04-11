@@ -39,7 +39,7 @@
     padding-bottom: 56.25%; /* Untuk mengatur aspect ratio menjadi 16:9 */
 }
   
-.leaflet-container {
+.map-container .leaflet-container {
     position: absolute;
     top: 0;
     left: 0;

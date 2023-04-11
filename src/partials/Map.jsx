@@ -1,21 +1,49 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline, Tooltip } from 'react-leaflet';
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, useMap, Popup, Polyline, Tooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../css/style.css';
 
+function RecenterAutomatically (props) {
+    const map = useMap();
+    console.log("ppp");
+    console.log(props.position);
+    
+    useEffect(() => {
+        map.setView(props.position);
+    }, [props.position]);
+    // return null;
+   }
+   
 export function MapComponent(props) {
     const {nodeCount, nodes, weightedAdjacencyMatrix } = props.data;
-    // const position = [-6.1753924, 106.8271528]; // koordinat Jakarta
+    // const mapRef = useRef(null);
     const position = [nodes[0].lat,nodes[0].lon];
     const markers = [];
     const polylines = [];
     let maxDist = 0;
 
+    // const [position, setPosition] = useState([nodes[0].lat,nodes[0].lon]);
+    // const [position, setPosition] = useState(nodes?.[0]?.lat && nodes?.[0]?.lon ? [nodes[0].lat, nodes[0].lon] : [0, 0]);
+
+    // // useEffect(() => {
+    // //     setPosition([nodes[0].lat, nodes[0].lon]);
+    // // }, [props]);
+    // // console.log(position)
+    // useEffect(() => {
+    //     if (nodes?.[0]?.lat && nodes?.[0]?.lon) {
+    //         setPosition([nodes[0].lat, nodes[0].lon]);
+    //     }
+    // }, [props]);
+    
+    // Panggil setView ketika posisi berubah
+    // useEffect(() => {
+    //     mapRef.current.setView(position);
+    // }, [position]);
+    
+
     // Iterasi tiap simpul
     for (let i = 0; i < nodeCount; i++) {
         const { name: nama, lat, lon } = nodes[i];
-        console.log(nodes[i]);
-        console.log(nama);
         markers.push(
             <Marker key={nama} position={[lat, lon]}>
                 <Popup>{nama}</Popup>
@@ -68,7 +96,8 @@ export function MapComponent(props) {
                             className: "leaflet-tooltip-custom",
                             }}
                         >
-                            {weightedAdjacencyMatrix[i][j] / 1000} km
+                            {nodes[i].name} - {nodes[j].name} <br></br>
+                            {(weightedAdjacencyMatrix[i][j] / 1000).toFixed(4)} km
                         </Tooltip>
                     </Polyline>
                 );
@@ -76,32 +105,27 @@ export function MapComponent(props) {
         }
     }
 
-    console.log(maxDist);
     let zoom = 0;
     if (maxDist > 50000) {
         zoom = Math.sqrt(12500000 / maxDist);
     } else {
         zoom = Math.sqrt(4000000 / maxDist);
     }
-    return (
-        // <div className="map-wrapper">
-        <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
+    return (       
+        <MapContainer className="map-container" center={position} zoom={zoom} style={{ width:`1024`, height:`504` }}>
 
-            <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
-                <MapContainer className = "map-container" center={position} zoom={zoom} style={{ width:`1024`, height:`504` }}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution="Map data © <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
+            />
 
-                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution="Map data © <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
-                    />
+            {/* <Marker position={position}>
+                <Popup> {nodes[0].name} </Popup>
+            </Marker> */}
+            { markers }
 
-                    {/* <Marker position={position}>
-                        <Popup> {nodes[0].name} </Popup>
-                    </Marker> */}
-                    { markers }
+            { polylines }
+            <RecenterAutomatically position={position}/>
+        </MapContainer>
 
-                    { polylines }
-                </MapContainer>
-            </div>
-        </div>
     )
 }
