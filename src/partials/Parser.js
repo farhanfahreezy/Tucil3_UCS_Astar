@@ -28,8 +28,8 @@ export async function parseFile(fileContent) {
     // mengambil informasi setiap simpul
     for (let i = 1; i <= nodeCount; i++) {
         const [nodeName, coord] = lines[i].split(" "); // memisahkan nama simpul dan koordinat
-        const [lat, lon] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi x dan y
-        nodes.push({ name: nodeName, lat, lon }); // menambahkan nama simpul dan koordinat ke arralon nodes
+        const [x, y] = coord.split(",").map(parseFloat); // memisahkan koordinat menjadi x dan y
+        nodes.push({ name: nodeName, lat, lon, id : i }); // menambahkan nama simpul dan koordinat beserta id ke array nodes
     }
     
     let adjacencyMatrix = []; // array untuk menyimpan matriks ketetanggaan
