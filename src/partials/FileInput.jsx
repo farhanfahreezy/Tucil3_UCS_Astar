@@ -17,8 +17,10 @@ function FileInput() {
       const content = e.target.result;
       const parsedData = await parseFile(content);
       setData(parsedData);
-      const getPath = searchPathUCS(1,2,data.nodes,data.nodeCount,data.weightedAdjacencyMatrix);
-      setPath(getPath);
+      const path = await searchPathUCS(parsedData.nodes[12],parsedData.nodes[3],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
+      console.log(path);
+      console.log(path[path.length-1]);
+      // setPath(getPath);
     };
 
     reader.readAsText(file);
