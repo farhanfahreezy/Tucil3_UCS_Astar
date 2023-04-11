@@ -27,27 +27,46 @@ function FileInput() {
     reader.readAsText(file);
   };
 
-  const handleButtonClick = () => {
-    // Menggunakan isi file yang disimpan di state
-    console.log(fileContent);
-  };
+  // const handleButtonClick = () => {
+  //   // Menggunakan isi file yang disimpan di state
+  //   console.log(fileContent);
+  // };
+  const styles = `
+  input[type="file"] {
+    color: white;
+    background-color: transparent;
+    border: none;
+  }
+  `;
+
+
 
   return (
-    <div>
-      {/* <MapComponent data = {data} /> */}
-      {data ? <MapComponent data={data} /> : null}
+    <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
+      <div data-aos="fade-up" data-aos-delay="400" data-aos-offset="1">
+        {/* <MapComponent data = {data} /> */}
+        {data ? <MapComponent data={data} /> : null}
 
-      <input type="file" accept=".txt" onChange={handleFileChange} />
-      <button onClick={handleButtonClick}>Gunakan Isi File</button>
-      {data && (
-        <div>
-          num of nodes: {data.nodeCount}
-          <br></br>
-          adjacencyMatrix: {data.weightedAdjacencyMatrix.map(row => row.join(' ')).join('\n')}
-          <br></br>
-          {/* path : {path.path} */}
-        </div>
-      )}
+        {/* <style>{styles}</style> */}
+        <input className="
+        btn-sm 
+        text-white 
+        bg-purple-600 
+        hover:bg-purple-700 
+        ml-3 
+        z-10" 
+        type="file" accept=".txt" onChange={handleFileChange} />
+        {/* <button onClick={handleButtonClick}>Gunakan Isi File</button> */}
+        {data && (
+          <div>
+            num of nodes: {data.nodeCount}
+            <br></br>
+            adjacencyMatrix: {data.weightedAdjacencyMatrix.map(row => row.join(' ')).join('\n')}
+            <br></br>
+            {/* path : {path.path} */}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

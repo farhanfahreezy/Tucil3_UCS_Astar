@@ -44,7 +44,7 @@ function HeroHome() {
             <h1 className="h1 mb-4" data-aos="fade-up">
               Shortest Path
             </h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
+            {/* <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
               Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
@@ -58,7 +58,7 @@ function HeroHome() {
                   Learn more
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Hero image */}
