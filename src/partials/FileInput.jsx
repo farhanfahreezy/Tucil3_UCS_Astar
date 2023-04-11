@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import parseFile from "./Parser";
 import { MapComponent } from "./Map";
 import { searchPathUCS } from "./UCS";
+import { searchPathAstar } from "./Astar";
 
 function FileInput() {
   const [fileContent, setFileContent] = useState("");
   const [data, setData] = useState(null);
-  const [path, setPath] = useState(null);
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -18,9 +18,13 @@ function FileInput() {
       const content = e.target.result;
       const parsedData = await parseFile(content);
       setData(parsedData);
-      const path = await searchPathUCS(parsedData.nodes[12],parsedData.nodes[3],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
-      console.log(path);
-      console.log(path[path.length-1]);
+      const pathUCS= await searchPathUCS(parsedData.nodes[12],parsedData.nodes[3],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
+      console.log("UCS Result");
+      console.log(pathUCS);
+      const pathAstar= await searchPathAstar(parsedData.nodes[12],parsedData.nodes[3],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
+      console.log("AStar Result");
+      console.log(pathAstar);
+    
       // setPath(getPath);
     };
 
