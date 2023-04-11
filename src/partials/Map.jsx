@@ -112,7 +112,7 @@ export function MapComponent(props) {
         zoom = Math.sqrt(4000000 / maxDist);
     }
     return (       
-        <MapContainer className="map-container" center={position} zoom={zoom} style={{ width:`1024`, height:`504` }}>
+        <MapContainer className="map-container" center={position} zoom={zoom} style={{ width:`180vh`, height:`80vh` }}>
 
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="Map data © <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
