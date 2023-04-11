@@ -1,59 +1,56 @@
 import { PrioQueue } from "./PrioQueue";
 
-export function searchPathUCS(startt,finishh,nodes,nodeCount,weightedAdjacencyMatrix){
-    // Kerjain
-    let start = getNodesFromId(startt);
-    let finish = getNodesFromId(finishh);
+export function searchPathUCS(start,finish,nodes,weightedAdjacencyMatrix){
+    // Inisiasi PriorityQueue dan activeNode
     const pQueue = new PrioQueue();
-    pQueue.enqueue(start,0,[]);
     let activeNode = {
         node : start,
         step : 0,
-        path : []
+        path : [start.id]
     };
 
+    // Masukkan activeNode ke queue
+    pQueue.enqueue(activeNode.node,activeNode.step,activeNode.path);
+
+    // Mencari jawaban dengan algoritma UCS
     while(activeNode.node != finish){
-        activeNode = doTheThing(pQueue,activeNode,finish,weightedAdjacencyMatrix,nodes,nodeCount);
+        activeNode = doTheThing(pQueue,finish,weightedAdjacencyMatrix,nodes);
     }
-    return activeNode.path;
+    return activeNode;
 }
 
-function doTheThing(pQueue,activeNode,finish,weightedAdjacencyMatrix,nodes,nodeCount){
-    activeNode = pQueue.enqueue();
+function doTheThing(pQueue,finish,weightedAdjacencyMatrix,nodes){
+    // Algoritma UCS
+
+    // Mengeluarkan isi queue paling depan
+    let activeNode = pQueue.dequeue();
 
     if(activeNode.node == finish){
-        // CHECK IF UDAH KETEMU
-        return;
+        // Mengecek jika activeNode merupakan finish
+        return activeNode;
     } else {
-        // ITERASI SEMUA ADJACENCY MATRIKS
+        // Mengecek semua adjacent node
         for(let i = 0;i<weightedAdjacencyMatrix[0].length;i++){
-            // KALO BERTETANGGA
             if(weightedAdjacencyMatrix[activeNode.node.id-1][i]!=0){
                 let id = i+1;
-                
-                if(activeNode.path.length==0){
-                    // KALO YG PERTAMA
-                    let newPath = [];
+                if(id != activeNode.path[(activeNode.path).length-1]){
+                    // Megecek agar pencarian tidak mundur kebelakang
+                    let newPath = activeNode.path.slice();
                     let newStep = activeNode.step + weightedAdjacencyMatrix[activeNode.node.id-1][i];
                     newPath.push(id);
-                    pQueue.enqueue(getNodesFromId(id,nodes,nodeCount),newStep,newPath);
 
-                } else {
-                    // KALO ga YG PERTAMA
-                    if(id != activeNode.path[activeNode.path.length-1]){
-                        let newPath = activeNode.path;
-                        let newStep = activeNode.step + weightedAdjacencyMatrix[activeNode.node.id-1][i];
-                        newPath.push(id);
-                        pQueue.enqueue(getNodesFromId(id,nodes,nodeCount),newStep,newPath);
-                    }
+                    // Memasukkan elemen baru ke queue
+                    pQueue.enqueue(getNodesById(id,nodes),newStep,newPath);
                 }
             }
         }
     }
+    return activeNode;
 }
 
-function getNodesFromId(id,nodes,nodeCount){
-    for(let i = 0; i<nodeCount;i++){
+function getNodesById(id,nodes){
+    // Mendapatkan node dari nodes berdasarkan id
+    for(let i = 0; i<nodes.length;i++){
         if(nodes[i].id == id){
             return nodes[i];
         }
