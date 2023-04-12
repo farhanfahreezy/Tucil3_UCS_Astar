@@ -18,6 +18,11 @@ function Test() {
         <HeroHome />
         <FileInput />
       </main>
+
+      {/* <Banner /> */}
+
+      {/*  Site footer */}
+      {/* <Footer /> */}
     </div>
   );
 }
