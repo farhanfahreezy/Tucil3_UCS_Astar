@@ -9,7 +9,7 @@
 Have you ever wondered how your GPS can find the fastest route to your destination? Well, computer scientists use algorithms to solve similar problems. In this web app project, we'll be using React Js framework and two popular algorithms, Uniform Cost Search (UCS) and A* search, to find the shortest path between connected nodes.
 
 Our goal with this app is to help users find the quickest way to get to their destination by analyzing the connections between nodes and calculating the shortest path. UCS works by exploring the connected nodes with the lowest cost, while A* search combines UCS with a heuristic to explore the nodes likely to lead to the shortest path. It's going to be an exciting project, and we can't wait to see our web app in action!
-![](src/resources/header.png)
+![](image/Home.png)
 
 ## Requirement
 
