@@ -6,9 +6,9 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![LeafLet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=Leaflet&logoColor=white)
 
-Have you ever played a game where you have to find your way out of a maze? Well, in computer science, we have to solve that same problem using algorithms. Two popular algorithms for solving mazes are Breadth-First Search (BFS) and Depth-First Search (DFS). And in this project, we'll be using C# and .NET Framework to develop our own maze solver using both BFS and DFS algorithms.
+Have you ever wondered how your GPS can find the fastest route to your destination? Well, computer scientists use algorithms to solve similar problems. In this web app project, we'll be using React Js framework and two popular algorithms, Uniform Cost Search (UCS) and A* search, to find the shortest path between connected nodes.
 
-Our goal with this maze solver is to find a path that will lead us to all the treasures hidden within the maze. BFS is like searching the maze level by level, while DFS is more like exploring a particular path as far as we can before backtracking and trying another path. It's going to be a fun project, and we can't wait to see our maze solver in action!
+Our goal with this app is to help users find the quickest way to get to their destination by analyzing the connections between nodes and calculating the shortest path. UCS works by exploring the connected nodes with the lowest cost, while A* search combines UCS with a heuristic to explore the nodes likely to lead to the shortest path. It's going to be an exciting project, and we can't wait to see our web app in action!
 ![](src/resources/header.png)
 
 ## Requirement
@@ -93,8 +93,8 @@ To run the Finding Home program, follow these steps:
 
 1. Clone this repository or download it as a ZIP file and extract it to your local machine.
 2. Open root directory of this repository and run `npm run dev` on terminal.
-3. Select input for your map.
-4. Select `Start` and `Finish` node.
+3. Click `Choose File` to input your .txt file.
+4. Select `Origin ID` and `Destination ID` in the dropdown option.
 5. Select either `UCS` or `A*` algorithm.
 6. Press `Search`
 7. Done!
@@ -104,5 +104,5 @@ To run the Finding Home program, follow these steps:
 
 | Name | NIM |
 | -------- | -------- |
-| M Dimas Sakti Widyatmaja | 13521160 |
 | Mohammad Farhan Fahrezy | 13521106 |
+| M Dimas Sakti Widyatmaja | 13521160 |
