@@ -24,26 +24,11 @@
 }
 
 .wrapper {
-    /* position: relative; */
+    position: relative;
     width: 100%;
-    /* max-width: 100; */
-    margin-top: 50px;
-    margin-bottom: 0 px;
-    margin-left: auto;
-    margin-right: auto;
-    /* display: inline-block; */
-    /* margin: 0 auto; */
+    max-width: 100;
+    margin: 0 auto;
 }
-
-.main-wrapper.after {
-    content: "";
-    display: table;
-    clear: both;  
-  }  
-
-* {
-    box-sizing: border-box;
-  }  
 
 .title {
     position: relative;
@@ -54,8 +39,15 @@
     display: grid;
 }
 
+/* Untuk ukuran layar yang lebih kecil dari 768px */
+
 /* Untuk ukuran layar yang lebih besar atau sama dengan 768px */
-@media screen and (min-width: 768px) {    
+@media screen and (min-width: 768px) {
+  .wrapper {
+      max-width: 768px;
+      padding: 0 20px;
+    }
+    
     .title {
       padding-top: 10px;
       padding-bottom: 16px;
@@ -63,9 +55,22 @@
 
     .main-wrapper {
       display: flex;
+      /* flex-wrap: wrap; */
+      /* flex-direction: row; */
+      /* flex-direction: column; */
+      /* justify-content: space-between; */
     }
 }
-
+/*    .leftScreen {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .rightScreen {
+      width: 50%;
+      margin: 0 auto;
+    }
+  } */
+  
 @media screen and (max-width: 767px) {
   .wrapper {
     max-width: 100%;
@@ -76,65 +81,59 @@
     padding-top: 5px;
     padding-bottom: 8px;
   }
-  
 }
 
-.row {
-    /* display: flex;  */
-    justify-content: center;
-}
+/* .main-wrapper {
+  display: flex;
+} */
 
-/* Clear floats after the columns */
-.row:after {
+.main-wrapper.after {
   content: "";
   display: table;
-  clear: both;
+  clear: both;  
 }
-  /* Create two equal columns that floats next to each other */
-  .column {
-    /* display: flex;
-    flex-direction: column; */
+
+.leftScreen {
+  flex: 50%;
+  float: left;
+  /* margin: 0 auto; */
+  width: 100%;
+  /* order: 2; */
+}
+  
+.rightScreen {
+    flex: 50%;
     float: right;
-    margin: auto auto;
+    /* margin: 0 auto; */
     width: 50%;
-    padding: 10px;
-    max-height: 120vh;
-    /* height: 50%; */
-    /* height: 300px; Should be removed. Only for demonstration */
-  }
+    /* order: 1; */
+}
   
-  
-  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 1000px) {
-    /* .row {
-        display: flex;
-        flex-direction: column;
-      } */
-    
-    .column {
-      width: 100%;
-      margin: auto auto;
-      max-width: 900px;
-    }
+@media (max-width: 768px) {
+  .leftScreen {
+    width: 50%;
+    /* order: 1; */
   }
 
+  .rightScreen {
+    width: 100%;
+    /* order: 2; */
+  }
+}
+  
 .map-wrapper {
     position: relative;
     justify-content: center;
-    margin: auto 5;
-    width: 100%;
-    display: flex;
-    height: 10%;
+    width: 80%;
+    height: 0;
     padding-bottom: 56.25%; /* Untuk mengatur aspect ratio menjadi 16:9 */
 }
 
 .map-container {
     position: relative;
     justify-content: center;
-    width: 100%;
-    max-width: 120vh;
-    /* max-height: 80vh; */
-    height: 80%;
+    width: 80%;
+    height: 0;
     padding-bottom: 56.25%; /* Untuk mengatur aspect ratio menjadi 16:9 */
 }
   
@@ -145,3 +144,35 @@
     bottom: 0;
     right: 0;
 }
+  
+.tooltip-custom {
+    font-style: italic;
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-shadow: 0 0 3px #000000;
+  }
+  
+  .leaflet-tooltip-custom:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 6px 0 6px;
+    border-color: #008000 transparent transparent transparent;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+  }
+  
+  .leaflet-tooltip-custom {
+    background: none !important;
+    color: #008000;
+    font-style: italic;
+    font-size: 12px;
+    text-align: center;
+    transform: rotate(45deg);
+    margin-top: -6px;
+  }
+  

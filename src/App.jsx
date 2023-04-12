@@ -11,6 +11,7 @@ import './css/style.css';
 import AOS from 'aos';
 
 import Home from './pages/Home';
+// import Test from './pages/Test';
 
 function App() {
 
