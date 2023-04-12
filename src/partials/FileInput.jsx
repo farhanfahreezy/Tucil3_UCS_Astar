@@ -175,7 +175,7 @@ function FileInput() {
 
           <br/>
 
-          {resNode && (
+          {resNode && time && (
             <div>
               Result Route: <br />{resNode}
             </div>
