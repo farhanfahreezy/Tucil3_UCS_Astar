@@ -169,7 +169,7 @@ function FileInput() {
 
           {distance && (
             <div>
-              Total Distance: {distance} m
+              Total Distance: {distance.toFixed(3)} m
             </div>
           )}
 
