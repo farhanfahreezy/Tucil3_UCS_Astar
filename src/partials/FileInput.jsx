@@ -19,10 +19,10 @@ function FileInput() {
       const content = e.target.result;
       const parsedData = await parseFile(content);
       setData(parsedData);
-      const pathUCS= await searchPathUCS(parsedData.nodes[14],parsedData.nodes[32],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
+      const pathUCS= await searchPathUCS(parsedData.nodes[2],parsedData.nodes[14],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
       console.log("UCS Result");
       console.log(pathUCS);
-      const pathAstar= await searchPathAstar(parsedData.nodes[14],parsedData.nodes[32],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
+      const pathAstar= await searchPathAstar(parsedData.nodes[2],parsedData.nodes[14],parsedData.nodes,parsedData.weightedAdjacencyMatrix);
       console.log("AStar Result");
       console.log(pathAstar);
     
