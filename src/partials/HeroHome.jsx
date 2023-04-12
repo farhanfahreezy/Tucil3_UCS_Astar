@@ -8,8 +8,11 @@ function HeroHome() {
         {/* Section header */}
         <div className="title">
           <h1 className="h2 mb-5" data-aos="fade-up">
-            Shortest Path
+            Finding Home
           </h1>
+          <h4 className="h5 mb-5 z-10" data-aos="fade-up">
+            By Farhan & Sakti
+          </h4>
         </div>
       </div>
     </section>
