@@ -26,9 +26,6 @@ function checkIn(idx, arr) {
 }
    
 export function MapComponent(props) {
-    console.log(" ascoi", props.result);
-    console.log(13 in props.result);
-    console.log(13 == props.result[0]);
     if (!props.data) {
         let position = [-6.1753924, 106.8271528]; // koordinat Jakarta
         return (
@@ -46,22 +43,13 @@ export function MapComponent(props) {
 
     const {nodeCount, nodes, weightedAdjacencyMatrix } = props.data;
     const [ result, setResult ] = useState([]);
-    // const [ counter, setCounter ] = useState(0);
-
 
     let color = "green";
-    
-    // useEffect(() => {
-    //     setCounter((prev) => prev+1);
-    //     // setClr("red");
-    // }, [color]);
-    
+        
     useEffect(() => {
         setResult(props.result);
-        // setClr("red");
     }, [props.result]);
 
-    // const mapRef = useRef(null);
     const position = [nodes[0].lat,nodes[0].lon];
     const markers = [];
     const polylines = [];
