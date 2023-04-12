@@ -7,6 +7,7 @@ import FileInput from '../partials/FileInput';
 function Test() {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
+
       {/*  Page content */}
       <main className="grow">
         {/*  Page illustration */}
@@ -17,6 +18,7 @@ function Test() {
         {/*  Page sections */}
         <HeroHome />
         <FileInput />
+
       </main>
     </div>
   );
