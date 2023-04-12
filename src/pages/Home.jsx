@@ -7,8 +7,6 @@ import FileInput from '../partials/FileInput';
 function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
-      {/*  Site header */}
-      {/* <Header /> */}
 
       {/*  Page content */}
       <main className="grow">
@@ -20,18 +18,8 @@ function Home() {
         {/*  Page sections */}
         <HeroHome />
         <FileInput />
-        {/* <MapComponent /> */}
-        {/* <Graph /> */}
-        {/* <FeaturesBlocks />
-        <FeaturesZigZag />
-        <Testimonials />
-        <Newsletter /> */}
+
       </main>
-
-      {/* <Banner /> */}
-
-      {/*  Site footer */}
-      {/* <Footer /> */}
     </div>
   );
 }
