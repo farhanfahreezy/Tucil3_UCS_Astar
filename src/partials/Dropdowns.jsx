@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function Dropdowns({ options, onId1Change, onId2Change }) {
-//   console.log(options[0]);
   if (!options[0]) {
     return;
   }
@@ -22,7 +21,7 @@ function Dropdowns({ options, onId1Change, onId2Change }) {
 
   return (
     <div>
-      <label htmlFor="id1">Select Origin ID: </label>
+      <label htmlFor="id1">Select Origin: </label>
       <select id="id1" value={id1} onChange={handleId1Change} style={{color: "black"}}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -32,7 +31,7 @@ function Dropdowns({ options, onId1Change, onId2Change }) {
       </select>
 
       <br></br>
-      <label htmlFor="id2">Select DestinationID: </label>
+      <label htmlFor="id2">Select Destination: </label>
       <select id="id2" value={id2} onChange={handleId2Change} style={{color: "black"}}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>

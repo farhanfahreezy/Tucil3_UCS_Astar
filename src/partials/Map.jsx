@@ -5,8 +5,6 @@ import '../css/style.css';
 
 function RecenterAutomatically (props) {
     const map = useMap();
-    console.log("ppp");
-    console.log(props.position);
     
     useEffect(() => {
         map.setView(props.position);

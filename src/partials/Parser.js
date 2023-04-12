@@ -4,19 +4,15 @@ function toWeightedAdjacencyMatrix (adjMat, nodes) {
     for (let i = 0; i < adjMat.length; i++) {
         for (let j = 0; j < i; j++) {
             if (adjMat[i][j] == 1) {
-                // console.log(nodes[i]);
                 const { name: n1, lat: lat1, lon: lon1 } = nodes[i]; 
                 const { name: n2, lat: lat2, lon: lon2 } = nodes[j]; 
-                // [_, lat2, lon2] = nodes[j]; 
                 
                 adjMat[i][j] = getDistance(lat1, lon1, lat2, lon2);
                 adjMat[j][i] = adjMat[i][j];
             }
         }
     }
-
-    // console.log(adjMat);
-
+    
     return adjMat;
 }
 

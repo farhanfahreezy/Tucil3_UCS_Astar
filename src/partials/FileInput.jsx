@@ -36,17 +36,13 @@ function FileInput() {
   } 
   
   useEffect(() => {
-    console.log(result);
     setResNode([]);
-    // for (let i=0; i < result.length; i++) {
 
-    // }
     if (result.length != 0) {
       const nodes = result.map(i => `${data.nodes[i-1].name}`); // ambil setiap node dari data.nodes
-      const nodesStr = nodes.join(' -> '); // gabungkan setiap node dengan pemisah '-'
+      const nodesStr = nodes.join(' -> '); // gabungkan setiap node dengan pemisah '->'
       setResNode(nodesStr);        
     }
-    console.log("res: ", resNode);
   }, [result]);
   
   const handleFileChange = async (e) => {
@@ -98,10 +94,7 @@ function FileInput() {
     let t1= performance.now(); //end time
 
     await setResult((path.path));
-    console.log("result: ", result);
-    setTime((t1-t0)/1000);
-    console.log("exec time: ", (t1-t0)/1000 , "seconds");
-    
+    setTime((t1-t0)/1000);    
 };
 
   return (
