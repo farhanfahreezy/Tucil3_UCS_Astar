@@ -12,6 +12,7 @@ function FileInput() {
   const [searchMethod, setSearchMethod] = useState("UCS"); // default search method is UCS
   const [result, setResult] = useState([]); // default search method is UCS
   const [time, setTime] = useState(null); // default search method is UCS
+  const [distance, setDistance] = useState(null); // default search method is UCS
 
   const [id1, setId1] = useState("1");
   const [id2, setId2] = useState("1");
@@ -94,7 +95,8 @@ function FileInput() {
     let t1= performance.now(); //end time
 
     await setResult((path.path));
-    setTime((t1-t0)/1000);    
+    await setDistance((path.step));
+    setTime(t1-t0);    
 };
 
   return (
@@ -165,6 +167,14 @@ function FileInput() {
           <br>
           </br>
 
+          {distance && (
+            <div>
+              Total Distance: {distance} m
+            </div>
+          )}
+
+          <br/>
+
           {resNode && (
             <div>
               Result Route: <br />{resNode}
@@ -174,7 +184,7 @@ function FileInput() {
           <br />
           {time && 
             <div>
-              Execution Time: {time.toFixed(7)} sec
+              Execution Time: {time.toFixed(3)} ms
             </div>
           }
         </div>
