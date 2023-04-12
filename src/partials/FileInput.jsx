@@ -44,8 +44,8 @@ function FileInput() {
     let path = [];
     if (searchMethod === "UCS") {
       path = await searchPathUCS(
-        data.nodes[12],
-        data.nodes[3],
+        data.nodes[0],
+        data.nodes[21],
         data.nodes,
         data.weightedAdjacencyMatrix
       );
@@ -53,8 +53,8 @@ function FileInput() {
       console.log(path);
     } else {
       path = await searchPathAstar(
-        data.nodes[12],
-        data.nodes[3],
+        data.nodes[0],
+        data.nodes[21],
         data.nodes,
         data.weightedAdjacencyMatrix
       );
